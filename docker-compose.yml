@@ -4,7 +4,6 @@ services:
   database:
     container_name: pokemon_db
     image: mysql:5.7
-    restart: always
     environment:
       MYSQL_DATABASE: 'pokemon_api'
       MYSQL_USER: 'dev'

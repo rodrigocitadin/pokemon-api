@@ -1,0 +1,14 @@
+version: '2.0'
+
+services:
+  database:
+    container_name: pokemon_db
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'pokemon_api'
+      MYSQL_USER: 'dev'
+      MYSQL_PASSWORD: 'dev'
+      MYSQL_ROOT_PASSWORD: 'root'
+    ports:
+      - '3306:3306'

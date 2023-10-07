@@ -17,4 +17,18 @@ public class DataContext : DbContext
     public DbSet<PokemonCategory> PokemonCategories { get; set; }
     public DbSet<Review> Reviews { get; set; }
     public DbSet<Reviewer> Reviewers { get; set; }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<PokemonCategory>()
+            .HasKey(pc => new { pc.PokemonId, pc.CategoryId });
+        modelBuilder.Entity<PokemonCategory>()
+            .HasOne(p => p.Pokemon)
+            .WithMany(pc => pc.PokemonsCategories)
+            .HasForeignKey(p => p.PokemonId);
+        modelBuilder.Entity<PokemonCategory>()
+            .HasOne(c => c.Category)
+            .WithMany(pc => pc.PokemonsCategories)
+            .HasForeignKey(c => c.CategoryId);
+    }
 }

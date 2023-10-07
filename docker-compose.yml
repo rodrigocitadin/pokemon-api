@@ -3,11 +3,10 @@ version: '2.0'
 services:
   database:
     container_name: pokemon_db
-    image: mysql:5.7
+    image: mcr.microsoft.com/mssql/server:2022-latest
     environment:
-      MYSQL_DATABASE: 'pokemon_api'
-      MYSQL_USER: 'dev'
-      MYSQL_PASSWORD: 'dev'
-      MYSQL_ROOT_PASSWORD: 'root'
+      SA_PASSWORD: "dev"
+      ACCEPT_EULA: "Y"
+      MSSQL_PID: "dev"
     ports:
-      - '3306:3306'
+      - "1433:1433"

@@ -2,11 +2,10 @@ version: '2.0'
 
 services:
   database:
-    container_name: pokemon_db
+    container_name: pokemon_sql_server
     image: mcr.microsoft.com/mssql/server:2022-latest
     environment:
-      SA_PASSWORD: "dev"
+      MSSQL_SA_PASSWORD: "DevPass@w0rd"
       ACCEPT_EULA: "Y"
-      MSSQL_PID: "dev"
     ports:
       - "1433:1433"

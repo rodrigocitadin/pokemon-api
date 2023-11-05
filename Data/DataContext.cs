@@ -24,7 +24,7 @@ public class DataContext : DbContext
             .HasKey(pc => new { pc.PokemonId, pc.CategoryId });
         modelBuilder.Entity<PokemonCategory>()
             .HasOne(p => p.Pokemon)
-            .WithMany(pc => pc.PokemonsCategories)
+            .WithMany(pc => pc.PokemonCategories)
             .HasForeignKey(p => p.PokemonId);
         modelBuilder.Entity<PokemonCategory>()
             .HasOne(c => c.Category)

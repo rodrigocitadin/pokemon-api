@@ -20,8 +20,7 @@ public class PokemonRepository : IPokemonRepository
 
     public Pokemon? GetPokemon(int id) => _context
         .Pokemons
-        .Where(p => p.Id == id)
-        .FirstOrDefault();
+        .First(p => p.Id == id);
 
     public Pokemon? GetPokemon(string name) => _context
         .Pokemons

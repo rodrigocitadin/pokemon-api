@@ -28,12 +28,12 @@ public class PokemonRepository : IPokemonRepository
         .Where(p => p.Name == name)
         .FirstOrDefault();
 
-    public decimal GetPokemonRating(int PokemonId)
-    {
-        throw new NotImplementedException();
-    }
+    public decimal GetPokemonRating(int pokemonId) => _context
+        .Reviews
+        .Where(p => p.Id == pokemonId)
+        .Average(r => r.Rating);
 
-    public bool PokemonExists(int PokemonId)
+    public bool PokemonExists(int pokemonId)
     {
         throw new NotImplementedException();
     }

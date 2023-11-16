@@ -23,10 +23,10 @@ public class PokemonRepository : IPokemonRepository
         .Where(p => p.Id == id)
         .FirstOrDefault();
 
-    public Pokemon GetPokemon(string name)
-    {
-        throw new NotImplementedException();
-    }
+    public Pokemon? GetPokemon(string name) => _context
+        .Pokemons
+        .Where(p => p.Name == name)
+        .FirstOrDefault();
 
     public decimal GetPokemonRating(int PokemonId)
     {

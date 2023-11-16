@@ -17,4 +17,24 @@ public class PokemonRepository : IPokemonRepository
         .Pokemons
         .OrderBy(p => p.Id)
         .ToList();
+
+    public Pokemon GetPokemon(int id)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Pokemon GetPokemon(string name)
+    {
+        throw new NotImplementedException();
+    }
+
+    public decimal GetPokemonRating(int PokemonId)
+    {
+        throw new NotImplementedException();
+    }
+
+    public bool PokemonExists(int PokemonId)
+    {
+        throw new NotImplementedException();
+    }
 }

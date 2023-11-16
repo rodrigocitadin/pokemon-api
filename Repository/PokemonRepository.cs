@@ -32,9 +32,4 @@ public class PokemonRepository : IPokemonRepository
         .Reviews
         .Where(p => p.Id == pokemonId)
         .Average(r => r.Rating);
-
-    public bool PokemonExists(int pokemonId)
-    {
-        throw new NotImplementedException();
-    }
 }

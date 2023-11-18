@@ -30,4 +30,17 @@ public class PokemonController : Controller
 
         return Ok(pokemons);
     }
+
+    [HttpGet("{id}")]
+    [ProducesResponseType(200, Type = typeof(Pokemon))]
+    [ProducesResponseType(400)]
+    public IActionResult GetPokemon(int id)
+    {
+        var pokemon = _mapper.Map<PokemonDto>(_pokemonRepository.GetPokemon(id));
+
+        if (!ModelState.IsValid)
+            return BadRequest(ModelState);
+
+        return Ok(pokemon);
+    }
 }

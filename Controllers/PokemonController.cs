@@ -1,3 +1,4 @@
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using PokemonApi.Interfaces;
 using PokemonApi.Models;
@@ -9,10 +10,12 @@ namespace PokemonApi.Controllers;
 public class PokemonController : Controller
 {
     private readonly IPokemonRepository _pokemonRepository;
+    private readonly IMapper _mapper;
 
-    public PokemonController(IPokemonRepository pokemonRepository)
+    public PokemonController(IPokemonRepository pokemonRepository, IMapper mapper)
     {
         _pokemonRepository = pokemonRepository;
+        _mapper = mapper;
     }
 
     [HttpGet]

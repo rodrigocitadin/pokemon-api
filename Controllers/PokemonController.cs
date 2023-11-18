@@ -45,7 +45,7 @@ public class PokemonController : Controller
     }
 
 
-    [HttpGet("{id/rating}")]
+    [HttpGet("{id}/rating")]
     [ProducesResponseType(200, Type = typeof(decimal))]
     [ProducesResponseType(400)]
     public IActionResult GetPokemonRating(int id)

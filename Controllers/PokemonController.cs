@@ -1,5 +1,6 @@
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using PokemonApi.Dto;
 using PokemonApi.Interfaces;
 using PokemonApi.Models;
 
@@ -22,7 +23,7 @@ public class PokemonController : Controller
     [ProducesResponseType(200, Type = typeof(IEnumerable<Pokemon>))]
     public IActionResult GetPokemons()
     {
-        ICollection<Pokemon> pokemons = _pokemonRepository.GetPokemons();
+        var pokemons = _mapper.Map<List<PokemonDto>>(_pokemonRepository.GetPokemons());
 
         if (!ModelState.IsValid)
             return BadRequest(ModelState);

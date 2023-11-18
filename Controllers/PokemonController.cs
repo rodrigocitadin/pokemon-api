@@ -43,4 +43,18 @@ public class PokemonController : Controller
 
         return Ok(pokemon);
     }
+
+
+    [HttpGet("{id/rating}")]
+    [ProducesResponseType(200, Type = typeof(decimal))]
+    [ProducesResponseType(400)]
+    public IActionResult GetPokemonRating(int id)
+    {
+        decimal rating = _pokemonRepository.GetPokemonRating(id);
+
+        if (!ModelState.IsValid)
+            return BadRequest(ModelState);
+
+        return Ok(rating);
+    }
 }

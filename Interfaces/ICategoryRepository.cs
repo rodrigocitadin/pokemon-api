@@ -2,7 +2,7 @@ using PokemonApi.Models;
 
 namespace PokemonApi.Interfaces;
 
-interface ICategoryRepository
+public interface ICategoryRepository
 {
     ICollection<Category> GetCategories();
     Category? GetCategory(int id);

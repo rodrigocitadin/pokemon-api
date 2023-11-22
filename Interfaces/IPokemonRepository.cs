@@ -2,7 +2,7 @@ using PokemonApi.Models;
 
 namespace PokemonApi.Interfaces;
 
-interface IPokemonRepository
+public interface IPokemonRepository
 {
     ICollection<Pokemon> GetPokemons();
     ICollection<Pokemon> GetPokemons(string name);

@@ -17,11 +17,6 @@ public class ReviewRepository : IReviewRepository
         .Reviews
         .First(r => r.Id == id);
 
-    public ICollection<Review> GetReviews(string title) => _context
-        .Reviews
-        .Where(r => r.Title == title)
-        .ToList();
-
     public ICollection<Review> GetReviews() => _context
         .Reviews
         .ToList();

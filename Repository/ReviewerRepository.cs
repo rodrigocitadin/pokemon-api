@@ -20,9 +20,4 @@ public class ReviewerRepository : IReviewerRepository
     public ICollection<Reviewer> GetReviewers() => _context
         .Reviewers
         .ToList();
-
-    public ICollection<Reviewer> GetReviewers(string firstName) => _context
-        .Reviewers
-        .Where(r => r.FirstName == firstName)
-        .ToList();
 }

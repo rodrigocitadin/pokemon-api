@@ -19,16 +19,16 @@ public class CategoryRepository : ICategoryRepository
 
     public Category? GetCategory(string name) => _context.Categories.First(c => c.Name == name);
 
-    Category CreateCategory(Category category)
+    public Category CreateCategory(Category category)
     {
         _context.Add(category);
 
-        if (Save())
+        if (!Save())
         {
-            return category;
+            throw new Exception();
         }
 
-        throw new Exception();
+        return category;
     }
 
     public bool Save()

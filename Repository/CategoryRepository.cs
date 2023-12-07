@@ -23,10 +23,7 @@ public class CategoryRepository : ICategoryRepository
     {
         _context.Add(category);
 
-        if (!Save())
-        {
-            throw new Exception();
-        }
+        if (!Save()) throw new Exception();
 
         return category;
     }

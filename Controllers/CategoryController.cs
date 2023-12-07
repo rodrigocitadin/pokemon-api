@@ -43,4 +43,37 @@ public class CategoryController : Controller
 
         return Ok(category);
     }
+
+    [HttpPost]
+    [ProducesResponseType(201, Type = typeof(Category))]
+    [ProducesResponseType(400)]
+    public IActionResult CreateCategory(CategoryDto category)
+    {
+        if (category == null) return BadRequest(ModelState);
+    
+        var categoryAlreadyExists = _categoryRepository
+            .GetCategories()
+            .Where(c => c.Name.Trim().ToUpper() == category.Name.Trim().ToUpper())
+            .FirstOrDefault();
+    
+        if (categoryAlreadyExists != null)
+        {
+            ModelState.AddModelError("", "Category already exists");
+            return BadRequest(ModelState);
+        }
+
+        if (!ModelState.IsValid) return BadRequest(ModelState);
+
+        var categoryMap = _mapper.Map<Category>(category);
+
+        var createdCategory = _categoryRepository.CreateCategory(categoryMap);
+
+        if (createdCategory == null)
+        {
+            ModelState.AddModelError("", "something went wrong while saving");
+            return StatusCode(500, ModelState);
+        }
+
+        return StatusCode(201, createdCategory);
+    }
 }
